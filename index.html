@@ -2,28 +2,23 @@
   <body>
     <p id="demo">Hi.</p>
     <script>
-      document.body.style.zoom="150%"
+      document.body.style.zoom="350%"
       document.getElementById("demo").innerHTML = "Hello JavaScript!";
       const clickHandler1 = ()=>{
         try {
-          postMessage({type:'logout2',address:'addressWallet2'})
+          window.ReactNativeWebView.postMessage( 
+            JSON.stringify({
+              type:'logout',
+              address:'addressWallet2'
+            }) 
+          )
           document.getElementById("demo").innerHTML = "postMessage true";
         } catch (err) {
           document.getElementById("demo").innerHTML = "postMessage false";
         }
-
-      }
-      const clickHandler2 = ()=>{
-        try {
-          onMessage({type:'logout2',address:'addressWallet2'})
-          document.getElementById("demo").innerHTML = "onMessage true";
-        } catch (err) {
-          document.getElementById("demo").innerHTML = "onMessage false";
-        }
       }
     </script>
     <button onclick="clickHandler1()">Click me = postMessage</button>
-    <button onclick="clickHandler2()">Click me = onMessage</button>
     
   </body>
 </html>
